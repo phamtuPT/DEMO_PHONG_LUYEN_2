@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="noindex, nofollow">
-    <title>Nhúng Trang Web Toàn Màn Hình</title>
+    <title>Phòng luyện thi</title>
     <link rel="icon" href="./1.ico" type="image/x-icon">
     <style>
         * {
@@ -28,21 +28,14 @@
             display: block;
         }
     </style>
-</head>
-<body>
-
-    <iframe src="https://test.hust.edu.vn/" allowfullscreen>
-        Trình duyệt của bạn không hỗ trợ iframe hoặc trang web bị chặn.
-    </iframe>
-
-    <script>
-        // Chặn chuột phải
-        document.addEventListener("contextmenu", function(event) {
-            event.preventDefault();
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("contextmenu", function(event) {
+                event.preventDefault();
+            });
         });
 
-        // Chặn F12, Ctrl+U, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+S
-        document.addEventListener("keydown", function(event) {
+        window.addEventListener("keydown", function(event) {
             if (
                 event.key === "F12" || 
                 (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J" || event.key === "C")) || 
@@ -53,33 +46,27 @@
             }
         });
 
-        // Phát hiện mở DevTools bằng cách kiểm tra console.log
-        let devtoolsOpen = false;
         let element = new Image();
         Object.defineProperty(element, 'id', {
             get: function() {
-                devtoolsOpen = true;
                 document.body.innerHTML = "<h1>Phát hiện DevTools! Vui lòng đóng nó.</h1>";
             }
         });
         console.log(element);
 
-        // Kiểm tra kích thước cửa sổ để phát hiện DevTools
-        setInterval(function() {
-            if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
-                document.body.innerHTML = "<h1>Phát hiện DevTools! Vui lòng đóng nó.</h1>";
-            }
-        }, 1000);
-        
-        // Chặn kéo thả để ngăn người dùng kéo file HTML vào trình duyệt
+       
+
         document.addEventListener("dragstart", function(event) {
             event.preventDefault();
         });
-
         document.addEventListener("drop", function(event) {
             event.preventDefault();
         });
     </script>
-
+</head>
+<body onkeydown="return false">
+    <iframe src="https://test.hust.edu.vn/" allowfullscreen>
+        Trình duyệt của bạn không hỗ trợ iframe hoặc trang web bị chặn.
+    </iframe>
 </body>
 </html>
