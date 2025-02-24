@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh Loading với Hình Ảnh</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .loading-container {
+      width: 80%;
+      max-width: 600px;
+      position: relative;
+      height: 30px;
+      background: #ddd;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .loading-bar {
+      height: 100%;
+      width: 0%;
+      background: #4caf50;
+      transition: width 0.1s linear;
+    }
+    .moving-image {
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      transform: translate(-50%, -50%);
+      height: 40px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-container">
+    <div class="loading-bar" id="loadingBar"></div>
+    <img src="./bay.png" alt="Moving Object" class="moving-image" id="movingImage">
+  </div>
+
+  <script>
+    let progress = 0;
+    const loadingBar = document.getElementById('loadingBar');
+    const movingImage = document.getElementById('movingImage');
+
+    function updateLoading() {
+      if (progress <= 100) {
+        loadingBar.style.width = progress + '%';
+        movingImage.style.left = progress + '%';
+        progress += 1; // Tăng progress
+        requestAnimationFrame(updateLoading); // Gọi lại hàm
+      }
+    }
+
+    updateLoading(); // Bắt đầu chạy
+  </script>
+</body>
+</html>
