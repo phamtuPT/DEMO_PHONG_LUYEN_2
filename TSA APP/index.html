@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="noindex, nofollow">
-    <title>Nhúng Trang Web Toàn Màn Hình</title>
-    <link rel="icon" href="./1.ico" type="image/x-icon">
+    <title>Phòng luyện thi TSA</title>
     <style>
         * {
             margin: 0;
@@ -27,6 +26,20 @@
             border: none;
             display: block;
         }
+        .warning {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            z-index: 9999;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -35,43 +48,63 @@
         Trình duyệt của bạn không hỗ trợ iframe hoặc trang web bị chặn.
     </iframe>
 
+    <div id="warning" class="warning">⚠️ Phát hiện DevTools! Vui lòng đóng nó để tiếp tục.</div>
+
     <script>
         // Chặn chuột phải
         document.addEventListener("contextmenu", function(event) {
             event.preventDefault();
+            alert("🚫 Chuột phải đã bị vô hiệu hóa trên trang này!");
         });
 
-        // Chặn F12, Ctrl+U, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+S
+        // Chặn các phím tắt nguy hiểm
         document.addEventListener("keydown", function(event) {
             if (
                 event.key === "F12" || 
                 (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J" || event.key === "C")) || 
-                (event.ctrlKey && (event.key === "U" || event.key === "S"))
+                (event.ctrlKey && event.key === "U") || 
+                (event.ctrlKey && event.key === "S")
             ) {
                 event.preventDefault();
+                alert("🚫 Hành động này bị chặn vì lý do bảo mật!");
                 return false;
             }
         });
 
-        // Phát hiện mở DevTools bằng cách kiểm tra console.log
-        let devtoolsOpen = false;
-        let element = new Image();
-        Object.defineProperty(element, 'id', {
-            get: function() {
-                devtoolsOpen = true;
-                document.body.innerHTML = "<h1>Phát hiện DevTools! Vui lòng đóng nó.</h1>";
+        // Ngăn chặn Ctrl + U sử dụng event.keyCode (dành cho trình duyệt cũ)
+        document.addEventListener("keypress", function(event) {
+            if ((event.ctrlKey && event.keyCode === 85) || event.keyCode === 123) { // 85 = "U", 123 = F12
+                event.preventDefault();
+                alert("🚫 Bạn không thể xem mã nguồn của trang này!");
+                return false;
             }
         });
-        console.log(element);
 
-        // Kiểm tra kích thước cửa sổ để phát hiện DevTools
+        // Phát hiện DevTools bằng cách đo thời gian phản hồi của debugger
+        function detectDevTools() {
+            let start = performance.now();
+            debugger;
+            let end = performance.now();
+
+            if (end - start > 100) { // Nếu mất nhiều thời gian tức là DevTools đang mở
+                let warning = document.getElementById("warning");
+                warning.style.display = "block";
+                setTimeout(() => { warning.style.display = "none"; }, 3000);
+            }
+        }
+        setInterval(detectDevTools, 3000);
+
+        // Phát hiện thay đổi kích thước cửa sổ để mở DevTools
+        let threshold = 160;
         setInterval(function() {
-            if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
-                document.body.innerHTML = "<h1>Phát hiện DevTools! Vui lòng đóng nó.</h1>";
+            if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+                let warning = document.getElementById("warning");
+                warning.style.display = "block";
+                setTimeout(() => { warning.style.display = "none"; }, 3000);
             }
         }, 1000);
-        
-        // Chặn kéo thả để ngăn người dùng kéo file HTML vào trình duyệt
+
+        // Chặn kéo thả để tránh tải file HTML khác vào trình duyệt
         document.addEventListener("dragstart", function(event) {
             event.preventDefault();
         });
