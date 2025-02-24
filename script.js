@@ -18,9 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
       "ASFMHC": { name: "Nguyễn Thị Quyên", examCode: "ASFMHC" },
       "VCUONG": { name: "Nguyễn Việt Cường", examCode: "A4AWKT" },
       "VANSON": { name: "Nguyễn Văn Sơn", examCode: "AGMRUS" },
-      "123ABC": { name: "Anh Em Cây Khế", examCode: "AOHVBM" }
+      "123ABC": { name: "Anh Em Cây Khế", examCode: "AOHVBM" },
+      "DEMO01": { name: "Demo 1", examCode: "AS0XCG" },
+      "DEMO02": { name: "Demo 2", examCode: "A0VSOW" },
+      "DEMO03": { name: "Demo 3", examCode: "AK5XVD" },
+      "DEMO04": { name: "Demo 4", examCode: "A5TZ9U" },
+      "DEMO05": { name: "Demo 5", examCode: "AJUZEA" },
+      "DEMO06": { name: "Demo 6", examCode: "AIJ40C" },
+      "DEMO07": { name: "Demo 7", examCode: "A376OC" },
+      "DEMO08": { name: "Demo 8", examCode: "AAN5EG" },
+      "DEMO09": { name: "Demo 9", examCode: "AHXDJ5" },
+      "DEMO10": { name: "Demo 10", examCode: "AE56IO" }
   };
-
+  
   function enterFullScreen() {
       if (!document.fullscreenElement) {
           document.documentElement.requestFullscreen().catch(err => {
@@ -80,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (code.length === inputBoxes.length) {
       if (userMap[code]) {
         modalContent.innerHTML = `
-          <p>Đã xác nhận <b>${userMap[code].name}</b> đã đăng nhập hệ thống. Mã dự thi của bạn là <b>${userMap[code].examCode}</b>. Chúc bạn hoàn thành tốt bài thi!</p>
+          <p>Xác nhận <b>${userMap[code].name}</b> đã đăng nhập hệ thống. Mã dự thi của bạn là <b>${userMap[code].examCode}</b>. Hãy đăng nhập mã dự thi trên để tham dự bài thi. Chúc bạn hoàn thành tốt bài thi!</p>
           <button id='confirm-button' class='confirm-btn'>Xác nhận</button>
         `;
         modal.classList.add('show');
