@@ -56,7 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
       "130559": { "name": "Phạm Duy Quyền", "examCode": "ACWFDD" },
       "613045": { "name": "Nguyễn Tuấn Vũ", "examCode": "AAA1H" },
       "445610": { "name": "Đoàn Mạnh Duy", "examCode": "AS26AS" },
-      "300071": { "name": "Vũ Đức Tuấn Tú", "examCode": "A0DL49" }
+      "300071": { "name": "Vũ Đức Tuấn Tú", "examCode": "A0DL49" },
+      "241107": { "name": "Nguyễn Trần Đức Chiến", "examCode": "ADZQQF" },
+      "736855": { "name": "Đoàn Duy Long", "examCode": "ADSG1J" },
+      "191327": { "name": "Pham Dung", "examCode": "ABF57W" }
   };
 
  
