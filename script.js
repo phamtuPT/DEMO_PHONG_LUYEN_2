@@ -54,7 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "407494": { "name": "Mạc Đăng Quân", "examCode": "AD5VYI" },
       "046797": { "name": "đoàn giang sơn", "examCode": "ARNF6A" },
       "130559": { "name": "Phạm Duy Quyền", "examCode": "ACWFDD" },
-      "613045": { "name": "Nguyễn Tuấn Vũ", "examCode": "AAA1H" }
+      "613045": { "name": "Nguyễn Tuấn Vũ", "examCode": "AAA1H" },
+      "445610": { "name": "Đoàn Mạnh Duy", "examCode": "AS26AS" }
   };
 
  
