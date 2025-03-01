@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "576280": { "name": "Thiều Yến Nhi", "examCode": "ACG0EF" },
       "825256": { "name": "Minh Anh", "examCode": "AKU6CF" },
       "914147": { "name": "Nguyễn Thế Lộc", "examCode": "ADI30K" },
-      "894587": { "name": "Nguyễn Bá Viết Dũng", "examCode": "AOH2VB" },
+      "498329": { "name": "Nguyễn Bá Viết Dũng", "examCode": "AOH2VB" },
       "298108": { "name": "Nguyễn Nhật Nguyên", "examCode": "A0UXNF" },
       "279307": { "name": "Nguyễn Anh Tuấn", "examCode": "AA90NW" },
       "407494": { "name": "Mạc Đăng Quân", "examCode": "AD5VYI" },
