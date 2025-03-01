@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let progress = 0;
   let redirectUrl = "./TSA APP/index.html"; // Link chung cho tất cả trường hợp
 
+
+  
+
   const userMap = {
       "ABC123": { name: "Phạm Đình Tú", examCode: "AKLMHU" },
       "123456": { name: "Thầy Tiến xấu trai", examCode: "API9OY" },
@@ -28,8 +31,33 @@ document.addEventListener("DOMContentLoaded", function () {
       "DEMO07": { name: "Demo 7", examCode: "A376OC" },
       "DEMO08": { name: "Demo 8", examCode: "AAN5EG" },
       "DEMO09": { name: "Demo 9", examCode: "AHXDJ5" },
-      "DEMO10": { name: "Demo 10", examCode: "AE56IO" }
+      "DEMO10": { name: "Demo 10", examCode: "AE56IO" },
+      "970699": { "name": "Vũ Nhật Long", "examCode": "AKL33O" },
+      "659036": { "name": "Lương Phương Anh", "examCode": "ADHD37" },
+      "015570": { "name": "Nguyen Truong Giang", "examCode": "A1J1O5" },
+      "724007": { "name": "Tạ Đức Duy", "examCode": "AXCTL9" },
+      "893311": { "name": "Cao Việt", "examCode": "AK16KW" },
+      "191327": { "name": "Phạm Dũng", "examCode": "AFJPR3" },
+      "995321": { "name": "Nguyễn Khánh Trinh", "examCode": "AN64NF" },
+      "184858": { "name": "Nguyễn Nhật Minh", "examCode": "ANL6LT" },
+      "985343": { "name": "Vũ Ngọc Anh", "examCode": "ADDR1A" },
+      "076166": { "name": "Nguyễn Bá Dũng", "examCode": "AKUVKN" },
+      "847346": { "name": "Nguyễn Thị Hải", "examCode": "A8K1OV" },
+      "350581": { "name": "Hải Dương", "examCode": "ARLX3F" },
+      "070777": { "name": "Phan Phú Cường", "examCode": "AIS33O" },
+      "576280": { "name": "Thiều Yến Nhi", "examCode": "ACG0EF" },
+      "825256": { "name": "Minh Anh", "examCode": "AKU6CF" },
+      "914147": { "name": "Nguyễn Thế Lộc", "examCode": "ADI30K" },
+      "894587": { "name": "Nguyễn Bá Viết Dũng", "examCode": "AOH2VB" },
+      "298108": { "name": "Nguyễn Nhật Nguyên", "examCode": "A0UXNF" },
+      "279307": { "name": "Nguyễn Anh Tuấn", "examCode": "AA90NW" },
+      "407494": { "name": "Mạc Đăng Quân", "examCode": "AD5VYI" },
+      "046797": { "name": "đoàn giang sơn", "examCode": "ARNF6A" },
+      "130559": { "name": "Phạm Duy Quyền", "examCode": "ACWFDD" },
+      "613045": { "name": "Nguyễn Tuấn Vũ", "examCode": "AAA1H" }
   };
+
+ 
   
   function enterFullScreen() {
       if (!document.fullscreenElement) {
