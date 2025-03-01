@@ -6,7 +6,23 @@
   <title>Phòng ôn luyện</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="1.ico" type="image/x-icon"> <!-- Thêm favicon -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=1024">
+  <style>
+    .exam-btn, .close-btn {
+      background-color: #d32f2f; /* Màu đỏ giống nút Đóng */
+      color: white; /* Màu chữ trắng */
+      border: none; /* Loại bỏ viền */
+      padding: 10px 20px; /* Căn chỉnh kích thước */
+      font-size: 16px; /* Cỡ chữ */
+      cursor: pointer; /* Biểu tượng con trỏ */
+      border-radius: 5px; /* Bo góc */
+      display: inline-block;
+      margin: 5px;
+    }
+    .exam-btn:hover, .close-btn:hover {
+      background-color: #b71c1c; /* Màu tối hơn khi hover */
+    }
+  </style>
 </head>
 <body>
   <div class="progress-bar">
@@ -19,6 +35,7 @@
   <div id="loading-screen" class="loading-screen">
     <img src="bay.png" alt="Loading Airplane" class="loading-airplane"> <!-- Thêm hình ảnh máy bay -->
   </div>
+  
 
   <div class="container" style="display: none;"> <!-- Ban đầu ẩn container -->
     <div class="form-container">
@@ -64,6 +81,20 @@
     <div class="modal-content">
       <span class="modal-title">Mã không chính xác</span>
       <p>Mã bạn nhập chưa chính xác. Vui lòng thử lại.</p>
+    </div>
+  </div>
+
+  <!-- Màn hình chọn môn thi -->
+  <div id="exam-selection-modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-title">Thi thử đợt 4 TSA</span>
+      <p>Hãy làm bài thật nghiêm túc nhé. Bạn sẽ biết điểm thô ngay sau khi thi xong!</p>
+      <div class="button-container">
+        <button class="exam-btn">Toán</button>
+        <button class="exam-btn">Đọc Hiểu</button>
+        <button class="exam-btn">Khoa học</button>
+      </div>
+      <button class="close-btn">Đóng</button>
     </div>
   </div>
 
