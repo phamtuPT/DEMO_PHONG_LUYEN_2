@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
 
   const userMap = {
+      "AECK04": { name: "Phạm Đình Tú", examCode: "AKLMHU" },
       "ABC123": { name: "Phạm Đình Tú", examCode: "AKLMHU" },
       "123456": { name: "Thầy Tiến xấu trai", examCode: "API9OY" },
       "ASPH4I": { name: "Phạm Bảo Duy", examCode: "ASPH4I" },
@@ -98,6 +99,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   updateProgressBar();
+  document.addEventListener("DOMContentLoaded", function () {
+  // Hiển thị modal khi trang tải xong
+  const welcomeModal = document.getElementById("welcome-modal");
+  const confirmButton = document.getElementById("welcome-confirm");
+
+  welcomeModal.style.display = "flex";
+
+  confirmButton.addEventListener("click", function () {
+    welcomeModal.style.display = "none";
+  });
+});
+
 
   inputBoxes.forEach((input, index) => {
     input.addEventListener("input", (event) => {
@@ -128,24 +141,40 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("submit-button").addEventListener("click", () => {
     const code = Array.from(inputBoxes).map(box => box.value).join("");
     if (code.length === inputBoxes.length) {
-      if (userMap[code]) {
-        modalContent.innerHTML = `
-          <p>Xác nhận <b>${userMap[code].name}</b> đã đăng nhập hệ thống. Mã dự thi của bạn là <b>${userMap[code].examCode}</b>. Hãy đăng nhập mã dự thi trên để tham dự bài thi. Chúc bạn hoàn thành tốt bài thi!</p>
-          <button id='confirm-button' class='confirm-btn'>Xác nhận</button>
-        `;
-        modal.classList.add('show');
-
-        document.getElementById("confirm-button").addEventListener("click", () => {
-          window.location.href = redirectUrl;
-        });
-      } else {
-        errorModal.classList.add('show');
-        setTimeout(() => errorModal.classList.remove('show'), 1500);
-      }
+        if (userMap[code]) {
+            modalContent.innerHTML = code === "AECK04" ? `
+                <p><b>Thi thử Đợt 4 TSA</b></p>
+                <p>Chào mừng bạn đã tham dự bài thi!</p>
+                <button class='exam-btn' data-link='https://e.khaothi.online/t/P1-30818'>Toán học</button>
+                <button class='exam-btn' data-link='https://e.khaothi.online/t/P1-30819'>Đọc Hiểu</button>
+                <button class='exam-btn' data-link='https://e.khaothi.online/t/P1-30820'>Khoa học</button>
+                <button id='close-button' class='confirm-btn'>Đóng</button>
+            ` : `
+                <p>Xác nhận <b>${userMap[code].name}</b> đã đăng nhập hệ thống. Mã dự thi của bạn là <b>${userMap[code].examCode}</b>. Hãy đăng nhập mã dự thi trên để tham dự bài thi. Chúc bạn hoàn thành tốt bài thi!</p>
+                <button id='confirm-button' class='confirm-btn'>Xác nhận</button>
+            `;
+            
+            modal.classList.add('show');
+        } else {
+            errorModal.classList.add('show');
+            setTimeout(() => errorModal.classList.remove('show'), 1500);
+        }
     } else {
-      alert("Vui lòng nhập đủ mã trước khi tiếp tục!");
+        alert("Vui lòng nhập đủ mã trước khi tiếp tục!");
     }
-  });
+});
+
+modal.addEventListener("click", (event) => {
+    if (event.target.id === "close-button") {
+        modal.classList.remove('show');
+    } else if (event.target.id === "confirm-button") {
+        window.location.href = redirectUrl;
+    } else if (event.target.classList.contains("exam-btn")) {
+        window.open(event.target.getAttribute("data-link"), "_blank");
+    }
+});
+
+
 
   document.addEventListener('keydown', function(event) {
     if (event.key === 'F12' || (event.ctrlKey && (event.key === 's' || event.key === 'u'))) {
